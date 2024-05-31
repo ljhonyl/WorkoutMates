@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores de la aplicación -->
+    <color name="colorFondo">#171717</color>
+    <color name="colorTarjetas">#302828</color>
+    <color name="colorLetrasEditText">#C1C2C8</color>
+    <color name="itemMenuInferiorSeleccionado">#800080</color> <!-- Morado -->
 </resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098609285654",
+    "project_id": "workoutmates-2dbdd",
+    "storage_bucket": "workoutmates-2dbdd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098609285654:android:49e3510ac59618c2263337",
+        "android_client_info": {
+          "package_name": "es.tiernoparla.dam.proyecto.workoutmates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmVc6dwOBjnGx4-YDUbeQ2YJD0C5ooIPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

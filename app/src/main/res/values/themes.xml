@@ -5,5 +5,14 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.WorkoutMates" parent="Base.Theme.WorkoutMates"/>
+    <style name="Theme.WorkoutMates" parent="Base.Theme.WorkoutMates">
+        <!-- estilo de la app -->
+        <item name="android:textSize">18sp</item>
+        <item name="android:colorBackground">@color/colorFondo</item>
+        <item name="android:statusBarColor">@color/colorFondo</item>
+        <item name="colorSecondary">@color/colorTarjetas</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:editTextColor">@color/colorLetrasEditText</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
 </resources>
