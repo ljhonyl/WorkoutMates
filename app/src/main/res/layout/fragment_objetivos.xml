@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        android:id="@+id/scrollViewObjetivos"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".presentacion.objetivos.ObjetivosFragment">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+    <TextView
+            android:id="@+id/tvTituloObjetivos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Objetivos"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="28dp"
+            android:paddingBottom="16dp"/>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/pgPasos"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvTituloObjetivos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvSetPasos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pgPasos"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pasos"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:id="@+id/tvPasosObjetivos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="38sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+            <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/rsPasos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:valueFrom="200"
+                    android:valueTo="3000"/>
+
+            <Button
+                    android:id="@+id/btnConfirmarPasos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmar"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/pgKm"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@+id/cvSetPasos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvSetKm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pgKm"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kilometros a correr"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:id="@+id/tvKmObjetivos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="38sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+            <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/rsKm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:valueFrom="0"
+                    android:valueTo="30"/>
+
+            <Button
+                    android:id="@+id/btnConfirmarKm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmar"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/pgCalorias"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@+id/cvSetKm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cvCalorias"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pgCalorias"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_margin="8dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calorias"
+                    android:textColor="@color/black"/>
+
+            <TextView
+                    android:id="@+id/tvCaloriasObjetivos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="38sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+            <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/rsCalorias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:valueFrom="500"
+                    android:valueTo="3000"/>
+
+            <Button
+                    android:id="@+id/btnConfirmarCalorias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confirmar"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

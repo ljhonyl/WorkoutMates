@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/autenticacion_navigation"
+            app:startDestination="@id/registroFragment">
+
+
+    <fragment
+            android:id="@+id/registroFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.registro.RegistroFragment"
+            android:label="RegistroFragment"
+            tools:layout="@layout/fragment_registro">
+        <action
+                android:id="@+id/action_registroFragment_to_verificacionFragment"
+                app:destination="@id/verificacionFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/inicioFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.inicio.InicioFragment"
+            android:label="fragment_inicio"
+            tools:layout="@layout/fragment_inicio"/>
+    <fragment
+            android:id="@+id/verificacionFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.verificacion.VerificacionFragment"
+            android:label="VerificacionFragment"
+            tools:layout="@layout/fragment_verificacion">
+        <action
+                android:id="@+id/action_verificacionFragment_to_inicioFragment"
+                app:destination="@id/inicioFragment"/>
+        <argument
+                android:name="numero"
+                app:argType="string"/>
+        <argument
+                android:name="verificationId"
+                app:argType="string"/>
+        <argument
+                android:name="nombre"
+                app:argType="string"/>
+    </fragment>
+</navigation>

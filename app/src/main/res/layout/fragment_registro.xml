@@ -41,17 +41,24 @@
 
 
         <EditText
+                android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="text"
             android:hint="Nombre"/>
 
         <EditText
+                android:id="@+id/etNumero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Número de móvil"
+                android:inputType="text"
+                android:imeOptions="actionDone"
         android:layout_marginTop="30dp"/>
 
         <Button
+                android:id="@+id/btnRegistrarse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Registrase"
@@ -59,9 +66,17 @@
             android:layout_marginHorizontal="40dp"/>
 
         <TextView
+                android:id="@+id/tvPregunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¿Porque es necesario registrarse?"/>
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
 
 
     </LinearLayout>

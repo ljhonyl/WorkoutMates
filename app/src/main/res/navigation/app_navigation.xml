@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/app_navigation"
+            app:startDestination="@id/inicioFragment">
+
+
+    <fragment
+            android:id="@+id/inicioFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.inicio.InicioFragment"
+            android:label="fragment_inicio"
+            tools:layout="@layout/fragment_inicio">
+        <action
+                android:id="@+id/action_inicioFragment_to_rankingFragment"
+                app:destination="@id/rankingFragment"/>
+        <action
+                android:id="@+id/action_inicioFragment_to_objetivosFragment"
+                app:destination="@id/objetivosFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/objetivosFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.objetivos.ObjetivosFragment"
+            android:label="fragment_objetivos"
+            tools:layout="@layout/fragment_objetivos">
+        <action
+                android:id="@+id/action_objetivosFragment_to_rankingFragment"
+                app:destination="@id/rankingFragment"/>
+        <action
+                android:id="@+id/action_objetivosFragment_to_inicioFragment"
+                app:destination="@id/inicioFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/rankingFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.ranking.RankingFragment"
+            android:label="fragment_ranking"
+            tools:layout="@layout/fragment_ranking">
+        <action
+                android:id="@+id/action_rankingFragment_to_inicioFragment"
+                app:destination="@id/inicioFragment"/>
+        <action
+                android:id="@+id/action_rankingFragment_to_objetivosFragment"
+                app:destination="@id/objetivosFragment"/>
+    </fragment>
+</navigation>
