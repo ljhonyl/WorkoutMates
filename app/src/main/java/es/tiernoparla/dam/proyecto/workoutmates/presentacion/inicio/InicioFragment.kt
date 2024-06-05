@@ -1,8 +1,6 @@
 package es.tiernoparla.dam.proyecto.workoutmates.presentacion.inicio
 
 import android.Manifest
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context

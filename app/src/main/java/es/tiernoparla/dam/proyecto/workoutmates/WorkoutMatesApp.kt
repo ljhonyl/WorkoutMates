@@ -3,11 +3,8 @@ package es.tiernoparla.dam.proyecto.workoutmates
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import dagger.hilt.android.HiltAndroidApp
 import es.tiernoparla.dam.proyecto.workoutmates.core.Preferencias
-import es.tiernoparla.dam.proyecto.workoutmates.datos.basedatos.local.BaseDatos
 
 @HiltAndroidApp
 class WorkoutMatesApp : Application() {
