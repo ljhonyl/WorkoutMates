@@ -38,7 +38,7 @@ interface ActividadDAO {
      *
      * @return Una lista de todas las entidades ActividadEntidad en la base de datos.
      */
-    @Query("SELECT * FROM Actividades")
+    @Query("SELECT * FROM Actividades ORDER BY id DESC")
     suspend fun obtenerActividades(): List<ActividadEntidad>
 
     /**
