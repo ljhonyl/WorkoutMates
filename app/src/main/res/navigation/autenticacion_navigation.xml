@@ -14,6 +14,9 @@
         <action
                 android:id="@+id/action_registroFragment_to_verificacionFragment"
                 app:destination="@id/verificacionFragment"/>
+        <action
+                android:id="@+id/action_registroFragment_to_infoRegistroFragment"
+                app:destination="@id/infoRegistroFragment"/>
     </fragment>
     <fragment
             android:id="@+id/inicioFragment"
@@ -37,5 +40,17 @@
         <argument
                 android:name="nombre"
                 app:argType="string"/>
+        <argument
+                android:name="peso"
+                app:argType="string"/>
+    </fragment>
+    <fragment
+            android:id="@+id/infoRegistroFragment"
+            android:name="es.tiernoparla.dam.proyecto.workoutmates.presentacion.registro.InfoRegistroFragment"
+            android:label="fragment_info_registro"
+            tools:layout="@layout/fragment_info_registro">
+        <action
+                android:id="@+id/action_infoRegistroFragment_to_registroFragment"
+                app:destination="@id/registroFragment"/>
     </fragment>
 </navigation>

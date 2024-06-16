@@ -14,6 +14,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
+import es.tiernoparla.dam.proyecto.workoutmates.WorkoutMatesApp
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -23,6 +24,7 @@ class RegistroViewModel @Inject constructor(aplication: Application): AndroidVie
     private lateinit var navController: NavController
     private lateinit var numero: String
     private lateinit var nombre: String
+    private lateinit var peso: String
     private var mAuth: FirebaseAuth=FirebaseAuth.getInstance()
     private val _cargando = MutableLiveData<Boolean>()
     val cargando: LiveData<Boolean> = _cargando
@@ -34,17 +36,22 @@ class RegistroViewModel @Inject constructor(aplication: Application): AndroidVie
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val user = mAuth.currentUser
-                        Log.d("TAG", "autoverificacion")
+                        // Inicio de sesión exitoso, actualizar UI con la información del usuario
+                        WorkoutMatesApp.preferencias.setNombre(nombre)
+                        WorkoutMatesApp.preferencias.setNumero(numero)
+                        WorkoutMatesApp.preferencias.setPeso(peso)
+                        WorkoutMatesApp.actualizarSesionIniciada(true)
                     } else {
                         // Manejar el fallo de inicio de sesión
+                        Toast.makeText(getApplication(), "Verificación automatica fallida, verificarse manualmente", Toast.LENGTH_SHORT).show()
                     }
                 }
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
             _cargando.value=false
-            Toast.makeText(getApplication(), e.message, Toast.LENGTH_SHORT).show()
-            Log.d("TAG", "Verificación automatica fallida")
+            Toast.makeText(getApplication(), "Verificación automatica fallida, verificarse manualmente", Toast.LENGTH_SHORT).show()
+            Log.d("TAG", e.message.toString())
         }
 
         override fun onCodeSent(verificationId: String, p1: PhoneAuthProvider.ForceResendingToken) {
@@ -53,9 +60,10 @@ class RegistroViewModel @Inject constructor(aplication: Application): AndroidVie
         }
     }
 
-    fun iniciarVerificacion(activity: Activity, nombre: String, numero: String, navController: NavController) {
+    fun iniciarVerificacion(activity: Activity, nombre: String, numero: String, peso: String, navController: NavController) {
         this.numero = numero
         this.nombre=nombre
+        this.peso=peso
         this.navController = navController
         _cargando.value=true
 
@@ -69,6 +77,6 @@ class RegistroViewModel @Inject constructor(aplication: Application): AndroidVie
     }
 
     private fun navigateToVerificacionFragment(verificationId: String) {
-        navController.navigate(RegistroFragmentDirections.actionRegistroFragmentToVerificacionFragment(numero = numero, verificationId = verificationId, nombre = nombre))
+        navController.navigate(RegistroFragmentDirections.actionRegistroFragmentToVerificacionFragment(numero = numero, verificationId = verificationId, nombre = nombre, peso=peso))
     }
 }

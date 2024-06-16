@@ -44,9 +44,10 @@ class VerificacionFragment : Fragment() {
             if (binding.etCodigoVerificacion.text.isNotBlank()) {
                 val numero=args.numero
                 val nombre=args.nombre
+                val peso=args.peso
                 val verificationId = args.verificationId
                 val verificationCode = binding.etCodigoVerificacion.text.toString()
-                viewModel.onVerificarseClicked(numero, nombre,requireActivity(), findNavController(), verificationId, verificationCode)
+                viewModel.onVerificarseClicked(numero, nombre,peso,requireActivity(), findNavController(), verificationId, verificationCode)
             } else {
                 Toast.makeText(requireContext(), "Ingrese el código de verificación", Toast.LENGTH_SHORT).show()
             }

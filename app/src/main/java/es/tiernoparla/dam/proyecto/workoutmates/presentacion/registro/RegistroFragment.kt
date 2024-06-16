@@ -67,23 +67,37 @@ class RegistroFragment : Fragment() {
         binding.btnRegistrarse.setOnClickListener {
             val nombre = binding.etNombre.text.toString()
             val numero = binding.etNumero.text.toString()
+            val peso =binding.etPeso.text.toString()
 
             // Verifica que se hayan ingresado datos válidos
-            if (nombre.isNotBlank() && numero.isNotBlank()) {
-                registrarDatos(nombre, numero)
+            if (nombre.isNotBlank() && numero.isNotBlank() && peso.isNotBlank()) {
+                registrarDatos(nombre, numero, peso)
             }
             else {
                 Toast.makeText(requireContext(), "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
+        binding.tvPregunta.setOnClickListener {
+            findNavController().navigate(RegistroFragmentDirections.actionRegistroFragmentToInfoRegistroFragment())
+        }
     }
 
-    private fun registrarDatos(nombre: String, numero: String) {
-            val extension = "+34"
-            val numeroCompleto = extension + numero
-            Log.d("TAG","Numero $numeroCompleto")
-            usuario = Usuario(nombre, numeroCompleto)
-            iniciarAutenticacion()
+    private fun registrarDatos(nombre: String, numero: String, peso: String) {
+        val extension = "+34"
+        val numeroCompleto = extension + numero
+        Log.d("TAG","Numero $numeroCompleto")
+
+        // Formatear el peso
+        val pesoFormateado = formatearPeso(peso)
+
+        // Crear el objeto Usuario con el peso formateado
+        usuario = Usuario(nombre, numeroCompleto, pesoFormateado)
+        iniciarAutenticacion()
+    }
+    private fun formatearPeso(peso: String): String {
+        // Reemplazar la coma por el punto
+        val pesoFormateado = peso.replace(',', '.')
+        return pesoFormateado
     }
 
     /**
@@ -91,7 +105,7 @@ class RegistroFragment : Fragment() {
      */
     private fun iniciarAutenticacion() {
         usuario?.let {//Si usuario no es nulo ejecuta esta intrucción
-            viewModel.iniciarVerificacion(requireActivity(), it.nombre, it.numero, findNavController())
+            viewModel.iniciarVerificacion(requireActivity(), it.nombre, it.numero,it.peso, findNavController())
         }
     }
 }

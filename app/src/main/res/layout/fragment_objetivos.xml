@@ -30,7 +30,16 @@
             android:layout_height="100dp"
             app:layout_constraintTop_toBottomOf="@+id/tvTituloObjetivos"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cpb_progressbar_color="@color/itemMenuInferiorSeleccionado"/>
+    <TextView
+            android:id="@+id/tvProgresoPasos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/pgPasos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="35dp"/>
 
     <androidx.cardview.widget.CardView
             android:id="@+id/cvSetPasos"
@@ -39,7 +48,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pgPasos"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/colorTarjetas">
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -68,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:stepSize="1"
-                    android:valueFrom="200"
+                    android:valueFrom="0"
                     android:valueTo="3000"/>
 
             <Button
@@ -88,7 +98,16 @@
             app:layout_constraintTop_toBottomOf="@+id/cvSetPasos"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            app:cpb_progressbar_color="@color/itemMenuInferiorSeleccionado"/>
+    <TextView
+            android:id="@+id/tvProgresoKm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/pgKm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="35dp"/>
 
     <androidx.cardview.widget.CardView
             android:id="@+id/cvSetKm"
@@ -97,14 +116,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pgKm"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/colorTarjetas">
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                >
 
             <TextView
                     android:layout_width="wrap_content"
@@ -146,7 +167,16 @@
             app:layout_constraintTop_toBottomOf="@+id/cvSetKm"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            app:cpb_progressbar_color="@color/itemMenuInferiorSeleccionado"/>
+    <TextView
+            android:id="@+id/tvProgresoCalorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/pgCalorias"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="35dp"/>
 
     <androidx.cardview.widget.CardView
             android:id="@+id/cvCalorias"
@@ -155,7 +185,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pgCalorias"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/colorTarjetas">
 
         <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -184,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:stepSize="1"
-                    android:valueFrom="500"
+                    android:valueFrom="0"
                     android:valueTo="3000"/>
 
             <Button

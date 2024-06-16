@@ -22,6 +22,7 @@ class VerificacionViewModel @Inject constructor(application: Application) : Andr
     private var auth: FirebaseAuth = Firebase.auth
     private lateinit var numero: String
     private lateinit var nombre: String
+    private lateinit var peso: String
 
     // LiveData para notificar un evento de falla en la verificación
     private val _verificationFailedEvent = MutableLiveData<Unit>()
@@ -35,9 +36,10 @@ class VerificacionViewModel @Inject constructor(application: Application) : Andr
      * @param verificationId ID de verificación recibido.
      * @param codigo Código de verificación ingresado por el usuario.
      */
-    fun onVerificarseClicked(numero: String, nombre: String, activity: Activity, navController: NavController, verificationId: String, codigo: String) {
+    fun onVerificarseClicked(numero: String, nombre: String, peso:String, activity: Activity, navController: NavController, verificationId: String, codigo: String) {
         this.numero=numero
         this.nombre=nombre
+        this.peso=peso
         this.navController = navController
         val credential = PhoneAuthProvider.getCredential(verificationId, codigo)
         signInWithPhoneAuthCredential(credential)
@@ -52,8 +54,9 @@ class VerificacionViewModel @Inject constructor(application: Application) : Andr
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Inicio de sesión exitoso, actualizar UI con la información del usuario
-                    preferencias.guardarNombre(nombre)
-                    preferencias.guardarNumero(numero)
+                    preferencias.setNombre(nombre)
+                    preferencias.setNumero(numero)
+                    preferencias.setPeso(peso)
                     WorkoutMatesApp.actualizarSesionIniciada(true)
                 } else {
                     // Fallo en el inicio de sesión, mostrar un mensaje y actualizar la UI

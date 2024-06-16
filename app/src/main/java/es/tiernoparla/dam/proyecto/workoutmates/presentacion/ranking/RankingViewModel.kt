@@ -37,9 +37,10 @@ class RankingViewModel @Inject constructor(
             for (contacto in contactos) {
                 try {
                     //val numero=validarNumeroTelefono(contacto.numero)
-                    val numero="+34632161009"
+                    val numero=validarNumeroTelefono(contacto.numero)
                     Log.d("Consulta",numero)
                     if(numero.length>9){
+                        Log.d("TAG","Buscando en firebase")
                         consultarActividad.getActividadContato(numero, fechaActual) { actividad ->
                             if (actividad != null) {
                                 val contactoConActividad = ContactoRanking(contacto, actividad)
@@ -59,7 +60,7 @@ class RankingViewModel @Inject constructor(
 
     fun validarNumeroTelefono(numero: String): String {
         val numeroLimpio = numero.replace("[^0-9]".toRegex(), "") // Eliminar caracteres no numéricos
-        return if (numeroLimpio.length < 11) {
+        return if (numeroLimpio.length < 12) {
             if (numeroLimpio.length == 9) {
                 "+34$numeroLimpio" // Agregar prefijo internacional +34 si falta
             } else {

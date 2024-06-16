@@ -70,7 +70,7 @@ class RankingFragment : Fragment() {
         val msg = "Para mostrar la lista de contactos de Workoutmates, necesitamos acceder a sus contactos"
         val msg2 = "El permiso de contactos no ha sido aceptado. Para cambiarlo, acceda a los ajustes de su dispositivo."
         //Permisos ya rechazados, igualemnte se insertará el personaje
-        if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),Manifest.permission.READ_EXTERNAL_STORAGE)){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),Manifest.permission.READ_CONTACTS)){
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("AVISO")
                 .setMessage(msg2)
@@ -86,7 +86,7 @@ class RankingFragment : Fragment() {
             builder.setTitle("AVISO")
                 .setMessage(msg)
                 .setPositiveButton("Ok") { _, _ ->
-                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),PERMISSION_REQUEST_CODE)
+                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.READ_CONTACTS),PERMISSION_REQUEST_CODE)
                 }
             val dialog: AlertDialog= builder.create()
             dialog.show()

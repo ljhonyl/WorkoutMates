@@ -19,6 +19,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
+/**
+ * ViewModel para la pantalla de inicio de la aplicación.
+ *
+ * Esta clase maneja la lógica de presentación y la interacción con los casos de uso y servicios relacionados
+ * con la pantalla de inicio de la aplicación.
+ *
+ * @param consultarActividad Caso de uso para consultar las actividades registradas.
+ * @param registrarActividad Caso de uso para registrar y sincronizar las actividades.
+ * @param context Contexto de la aplicación.
+ */
 @HiltViewModel
 class InicioViewModel @Inject constructor(
     private val consultarActividad: ConsultarActividad,
@@ -41,6 +51,10 @@ class InicioViewModel @Inject constructor(
     private val formatoFecha = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
     private val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+    /**
+     * Inicialización del ViewModel.
+     * Se establece el nombre de usuario y se obtienen las actividades registradas.
+     */
     init {
         _nombreUsuario.value = preferencias.getNombre()
         getActividades()
@@ -69,7 +83,7 @@ class InicioViewModel @Inject constructor(
                 Log.d("TAG", "vacio")
             } else {
                 _actividadHoy.value = actividadDeHoyAux[0]
-                Log.d("TAG", actividadDeHoyAux[0].toString())
+                Log.d("TAG", "Actividad guardada: "+ actividadDeHoyAux[0].toString())
             }
         }
     }
@@ -89,42 +103,83 @@ class InicioViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Actualiza el número de pasos y las calorías quemadas.
+     *
+     * @param pasos Número de pasos registrados.
+     */
     fun actualizarPasos(pasos: Int) {
+        val caloriasHoy = truncarDecimales(calcularCaloriasPorPasos(pasos), 2)
         val actividad = _actividadHoy.value ?: return
-        val nuevaActividad = actividad.copy(pasos = pasos)
+        Log.d("TAG", "actividad guardada" + actividad.toString())
+        val nuevaActividad = actividad.copy(pasos = pasos, calorias = caloriasHoy)
+        Log.d("TAG", "actividad nueva" + nuevaActividad.toString())
         _actividadHoy.value = nuevaActividad
-        val aux=hayConexionInternet()
+        val aux = hayConexionInternet()
         Log.d("TAG", aux.toString())
         if (hayConexionInternet()) {
             sincronizarConFirebase()
+
         }
+
+    }
+
+    /**
+     * Calcula las calorías quemadas basadas en el número de pasos.
+     *
+     * @param pasos Número de pasos registrados.
+     * @return Calorías quemadas.
+     */
+    fun calcularCaloriasPorPasos(pasos: Int): Double {
+        val factorMetabolismoBasal = 0.05 // Valor promedio del factor de metabolismo basal
+        return factorMetabolismoBasal * preferencias.getPeso() * pasos * 0.0005
     }
 
     fun actualizarKilometros(distancia: Double) {
+        val distanciaInicial = preferencias.getDistanciaInicial()
+        val distanciaHoy = distancia - distanciaInicial
         val actividad = _actividadHoy.value ?: return
-        val nuevaActividad = actividad.copy(kilometros = distancia)
+        val nuevaActividad = actividad.copy(kilometros = distanciaHoy)
         _actividadHoy.value = nuevaActividad
         if (hayConexionInternet()) {
             sincronizarConFirebase()
         }
     }
 
+    /**
+     * Guarda una actividad en la base de datos.
+     *
+     * @param actividad Actividad a guardar.
+     */
     private fun guardarActividad(actividad: Actividad) {
         viewModelScope.launch {
             registrarActividad.registrar(actividad)
         }
     }
-    fun actualizarActividad(){
+
+    fun actualizarActividad() {
         viewModelScope.launch {
             val actividad = _actividadHoy.value ?: return@launch
             registrarActividad.actualizar(actividad)
         }
     }
 
-    fun sincronizarConFirebase(){
+    fun sincronizarConFirebase() {
         viewModelScope.launch {
             val actividad = _actividadHoy.value ?: return@launch
-            registrarActividad.sincronizarConFirebase(preferencias.getNumero(),actividad)
+            registrarActividad.sincronizarConFirebase(preferencias.getNumero(), actividad)
         }
+    }
+
+    /**
+     * Trunca un número decimal al número de decimales especificado.
+     *
+     * @param valor Valor decimal a truncar.
+     * @param decimales Número de decimales a mantener.
+     * @return Valor decimal truncado.
+     */
+    fun truncarDecimales(valor: Double, decimales: Int): Double {
+        val factor = Math.pow(10.0, decimales.toDouble())
+        return (valor * factor).toInt() / factor
     }
 }

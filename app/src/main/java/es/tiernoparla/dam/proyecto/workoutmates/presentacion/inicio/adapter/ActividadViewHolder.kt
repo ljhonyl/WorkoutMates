@@ -6,20 +6,25 @@ import es.tiernoparla.dam.proyecto.workoutmates.databinding.ItemActividadBinding
 import es.tiernoparla.dam.proyecto.workoutmates.dominio.modelos.Actividad
 
 /**
- * Clase que se encarga de asociar el diseño de la vista del item(item_personaje.xml)
+ * Clase ActividadViewHolder que extiende ViewHolder para gestionar la vista de un ítem de actividad
+ * en un RecyclerView.
+ *
+ * @param view Vista del ítem de actividad.
  */
-class ActividadViewHolder(view:View): ViewHolder(view){
-    private val binding= ItemActividadBinding.bind(view)
+class ActividadViewHolder(view: View) : ViewHolder(view) {
+
+    // Binding para acceder a las vistas del layout de ítem de actividad
+    private val binding = ItemActividadBinding.bind(view)
 
     /**
-     * Muestra los datos del personaje en las propiedades correspondientes
+     * Método para renderizar los datos de una actividad en las vistas correspondientes.
+     *
+     * @param actividad Instancia de la clase Actividad que contiene los datos a mostrar.
      */
-    fun render(actividad: Actividad){
-            binding.tvTitulo.text="Funciona"
-            binding.tvContadorPasos.text=actividad.pasos.toString()
-            binding.tvContadorKilometros.text=actividad.kilometros.toString()
-            binding.tvContadorCalorias.text=actividad.calorias.toString()
-
-
+    fun render(actividad: Actividad) {
+        binding.tvTitulo.text = "Actividad del ${actividad.fecha}"
+        binding.tvContadorPasos.text = actividad.pasos.toString()
+        binding.tvContadorKilometros.text = actividad.kilometros.toString()
+        binding.tvContadorCalorias.text = actividad.calorias.toString()
     }
 }

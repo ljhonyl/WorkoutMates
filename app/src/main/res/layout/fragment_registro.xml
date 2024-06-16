@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -47,6 +50,14 @@
                 android:imeOptions="actionNext"
                 android:inputType="text"
             android:hint="Nombre"/>
+        <EditText
+                android:id="@+id/etPeso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Peso"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:layout_marginTop="30dp"/>
 
         <EditText
                 android:id="@+id/etNumero"
@@ -69,7 +80,8 @@
                 android:id="@+id/tvPregunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Porque es necesario registrarse?"/>
+            android:text="¿Porque es necesario registrarse?"
+                android:layout_marginBottom="15dp"/>
 
         <ProgressBar
                 android:id="@+id/progressBar"
@@ -82,3 +94,4 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

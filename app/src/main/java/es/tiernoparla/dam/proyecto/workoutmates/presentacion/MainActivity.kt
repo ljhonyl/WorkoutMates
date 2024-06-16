@@ -17,6 +17,9 @@ import es.tiernoparla.dam.proyecto.workoutmates.WorkoutMatesApp
 import es.tiernoparla.dam.proyecto.workoutmates.WorkoutMatesApp.Companion.preferencias
 import es.tiernoparla.dam.proyecto.workoutmates.databinding.ActivityMainBinding
 
+/**
+ * Clase que representa la actividad principal de la aplicación.
+ */
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
@@ -27,16 +30,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        actulizarInterfaz()
-        observarEstadoSesion()
         menuInferior=binding.navView
+        actulizarInterfaz() // Método para actualizar la interfaz de usuario
+        observarEstadoSesion() // Método para observar el estado de la sesión
+
     }
 
+    /**
+     * Método para actualizar la interfaz de usuario.
+     */
     fun actulizarInterfaz(){
-        establecerGraficoDeNavegacion()
-        mostrarEncabezado()
+        establecerGraficoDeNavegacion() // Método para establecer el gráfico de navegación
+        mostrarEncabezado() // Método para mostrar el encabezado
     }
 
+    /**
+     * Método para establecer el gráfico de navegación.
+     */
     private fun establecerGraficoDeNavegacion() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.navHostFragment) as NavHostFragment
@@ -59,12 +69,18 @@ class MainActivity : AppCompatActivity() {
         navController.graph = navGraph
     }
 
+    /**
+     * Método para observar el estado de la sesión.
+     */
     private fun observarEstadoSesion() {
         WorkoutMatesApp.sesionIniciada.observe(this, Observer {
-            actulizarInterfaz()
+            actulizarInterfaz() // Actualizar la interfaz al cambiar el estado de la sesión
         })
     }
 
+    /**
+     * Método para mostrar el encabezado si el usuario ha iniciado sesión.
+     */
     private fun mostrarEncabezado() {
         if (preferencias.getNumero().isNotEmpty()) {
             binding.clEncabezado.visibility = View.VISIBLE
@@ -85,14 +101,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Método para manejar el desplazamiento del menú inferior.
+     */
     fun manejarDesplazamientoMenu(valorAnteriorEjeY: Int, valorActualEjeY: Int) {
-        if (valorActualEjeY > valorAnteriorEjeY && menuInferior.isShown) {
-            ocultarMenuInferior()
-        } else if (valorActualEjeY < valorAnteriorEjeY && menuInferior.visibility == View.GONE) {
-            mostrarMenuInferior()
+        if (valorActualEjeY > valorAnteriorEjeY) {
+            ocultarMenuInferior() // Ocultar el menú si se desplaza hacia abajo
+        } else if (valorActualEjeY < valorAnteriorEjeY) {
+            mostrarMenuInferior() // Mostrar el menú si se desplaza hacia arriba
         }
     }
 
+    /**
+     * Método para ocultar el menú inferior con animación.
+     */
     private fun ocultarMenuInferior() {
         menuInferior.animate()
             .translationY(menuInferior.height.toFloat())
@@ -103,6 +125,9 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
+    /**
+     * Método para mostrar el menú inferior con animación.
+     */
     private fun mostrarMenuInferior() {
         menuInferior.visibility = View.VISIBLE
         menuInferior.animate()

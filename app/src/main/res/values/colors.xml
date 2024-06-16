@@ -5,7 +5,7 @@
 
     <!-- Colores de la aplicación -->
     <color name="colorFondo">#171717</color>
-    <color name="colorTarjetas">#302828</color>
+    <color name="colorTarjetas">#8E4742</color>
     <color name="colorLetrasEditText">#C1C2C8</color>
-    <color name="itemMenuInferiorSeleccionado">#800080</color> <!-- Morado -->
+    <color name="itemMenuInferiorSeleccionado">#674FA2</color> <!-- Morado -->
 </resources>

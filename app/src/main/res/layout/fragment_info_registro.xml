@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".presentacion.registro.InfoRegistroFragment"
+        android:layout_margin="15dp">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Gracias por usar WorkouMates! La verificacion es necesaria debido a que una parte importante es que tus compartir la actividad entre los contactos, no queremos que te aisles."/>
+
+    <TextView
+            android:paddingTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Debes ingresar un número de teléfono valido y de tu propiedad pues recibiras un SMS con un codigo de verificación."/>
+
+    <TextView
+            android:paddingTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rogamos que también ingreses información valida en la pantalla de registro, para que tu experencia con WorkoutMates no se resienta."/>
+
+    <TextView
+            android:paddingTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="¡Difruta de WorkoutMates!"/>
+
+    <Button
+            android:id="@+id/btnVolver"
+            android:layout_marginTop="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"/>
+</LinearLayout>

@@ -34,7 +34,6 @@ class InicioFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var menuInferior: BottomNavigationView
     private var ejeYAnterior = 0
-    private var ejeY = 0
     private val PERMISSION_REQUEST_CODE = 100
 
     private val viewModel: InicioViewModel by viewModels()
@@ -98,12 +97,16 @@ class InicioFragment : Fragment() {
             binding.recyclerActividadAnterior.adapter = ActividadAdapter(actividades)
         }
         viewModel.contadorPasos.observe(viewLifecycleOwner) { pasos ->
-            binding.tvContadorPasosHoy.text = pasos.toString()
             viewModel.actualizarPasos(pasos)
+
         }
         viewModel.distanciaRecorrida.observe(viewLifecycleOwner) { distancia ->
-            binding.tvContadorKilometrosHoy.text = distancia.toString()
             viewModel.actualizarKilometros(distancia)
+        }
+        viewModel.actividadHoy.observe(viewLifecycleOwner) { actividad ->
+            binding.tvContadorPasosHoy.text = actividad.pasos.toString()
+            binding.tvContadorKilometrosHoy.text = actividad.kilometros.toString()
+            binding.tvContadorCaloriasHoy.text= actividad.calorias.toString()
         }
     }
 
